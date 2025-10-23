@@ -3,7 +3,7 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches:
-      - main  # Deploy whenever you push to main branch
+      - develop  # Deploy whenever you push to main branch
 
 permissions:
   contents: read
