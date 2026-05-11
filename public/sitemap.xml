@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>/en/sitemap.xml</loc>
-    
-      <lastmod>2021-01-20T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>/fr/sitemap.xml</loc>
-    
-      <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>/fa/sitemap.xml</loc>
-    
-      <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/tech-blog/about/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tech-blog/archives/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tech-blog/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tech-blog/search/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tech-blog/series/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tech-blog/tags/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tech-blog/</loc>
+  </url>
+</urlset>
