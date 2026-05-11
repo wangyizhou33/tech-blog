@@ -74,6 +74,9 @@ params:
     - name: github
       title: GitHub
       url: "https://github.com/wangyizhou33"
+    - name: linkedin
+      title: LinkedIn
+      url: "https://www.linkedin.com/in/yizhou-wang-99324525/"
 
   assets:
     disableHLJS: true
