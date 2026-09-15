@@ -15,3 +15,17 @@ iframe {
 .entry-cover img {
     border: 1px solid var(--border);
 }
+
+/* Wider content column. PaperMod defaults to 720px, which squeezed the
+   1600-2800px wide infographics in these posts down to an unreadable size. */
+:root {
+    --main-width: 840px;
+}
+
+/* The theme's reset sets `img { max-width: 100% }` with no `height: auto`.
+   Our render hook emits intrinsic width/height attributes (so the browser can
+   reserve space and avoid layout shift), and without this the clamped width
+   combined with the untouched height attribute distorts the aspect ratio. */
+img {
+    height: auto;
+}
