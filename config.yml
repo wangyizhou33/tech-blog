@@ -70,6 +70,8 @@ params:
   ShowToc: true
 
   homeInfoParams:
+    Image: images/world-model.png
+    ImageAlt: "So... what is a world model really?"
     Title: "Hi, I'm Yizhou"
     Content: >
       Welcome to my tech blog. I write about robotics, software engineering, and whatever else I find interesting.

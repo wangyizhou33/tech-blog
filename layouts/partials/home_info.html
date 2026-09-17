@@ -1,0 +1,34 @@
+{{- /*
+  Override of PaperMod's home_info.html: adds an optional image above the
+  homepage intro, set by homeInfoParams.Image (a path under assets/).
+  Resized and re-encoded like body images (see _markup/render-image.html).
+*/ -}}
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    {{- with .Image }}
+    {{- with resources.Get . }}
+    {{- $large := .Resize (printf "%dx jpg q90" (cond (gt .Width 2000) 2000 .Width)) }}
+    {{- $small := $large }}
+    {{- if gt .Width 1000 }}{{ $small = .Resize "1000x jpg q90" }}{{ end }}
+    <img class="home-info-image" src="{{ $large.RelPermalink }}"
+        {{- if ne $small.RelPermalink $large.RelPermalink }}
+        srcset="{{ $small.RelPermalink }} {{ $small.Width }}w, {{ $large.RelPermalink }} {{ $large.Width }}w"
+        sizes="(min-width: 1000px) 1000px, 100vw"
+        {{- end }}
+        width="{{ $large.Width }}" height="{{ $large.Height }}"
+        alt="{{ site.Params.homeInfoParams.ImageAlt }}">
+    {{- else }}
+    {{- warnf "homeInfoParams.Image %q not found under assets/" . }}
+    {{- end }}
+    {{- end }}
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ .Content | markdownify }}
+    </div>
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+    </footer>
+</article>
+{{- end -}}

@@ -29,3 +29,9 @@ iframe {
 img {
     height: auto;
 }
+
+.home-info-image {
+    width: 100%;
+    border-radius: var(--radius);
+    margin-bottom: var(--gap);
+}

@@ -1,0 +1,58 @@
+{{- /*
+  Downscales body images, re-encodes them as JPEG and emits a responsive srcset.
+  Based on PaperMod's render-image.html, which resolves page resources but
+  serves them at full size — a 2840px PNG screenshot ships as several MB.
+
+  Content column is --main-width (see assets/css/extended/custom.css), so the
+  large variant is 2x that for retina displays. JPEG (not WebP) because CI
+  installs the standard Hugo edition, which cannot encode WebP. JPEG has no
+  alpha: transparent pixels are flattened onto imaging.bgColor (white).
+
+  Animated GIFs and SVGs pass through untouched: Hugo's image pipeline would
+  flatten a GIF to its first frame.
+*/ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $src := $u.String -}}
+{{- $srcset := "" -}}
+{{- $width := "" -}}
+{{- $height := "" -}}
+{{- $maxWidth := 2000 -}}
+{{- $colWidth := 1000 -}}
+{{- if not $u.IsAbs -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path -}}
+  {{- with or (.PageInner.Resources.Get $path) (resources.Get $path) -}}
+    {{- $src = .RelPermalink -}}
+    {{- if and (in (slice "png" "jpeg" "webp") .MediaType.SubType) (not $u.RawQuery) (not $u.Fragment) -}}
+      {{- $large := .Resize (printf "%dx jpg q85" (cond (gt .Width $maxWidth) $maxWidth .Width)) -}}
+      {{- $small := $large -}}
+      {{- if gt .Width $colWidth -}}
+        {{- $small = .Resize (printf "%dx jpg q85" $colWidth) -}}
+      {{- end -}}
+      {{- $src = $large.RelPermalink -}}
+      {{- $width = string $large.Width -}}
+      {{- $height = string $large.Height -}}
+      {{- if ne $small.RelPermalink $large.RelPermalink -}}
+        {{- $srcset = printf "%s %dw, %s %dw" $small.RelPermalink $small.Width $large.RelPermalink $large.Width -}}
+      {{- end -}}
+    {{- else -}}
+      {{- with $u.RawQuery -}}{{- $src = printf "%s?%s" $src . -}}{{- end -}}
+      {{- with $u.Fragment -}}{{- $src = printf "%s#%s" $src . -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $attributes := merge .Attributes (dict
+      "alt" .Text
+      "src" $src
+      "title" (.Title | transform.HTMLEscape)
+      "loading" "lazy"
+      "srcset" $srcset
+      "sizes" (cond (ne $srcset "") (printf "(min-width: %dpx) %dpx, 100vw" $colWidth $colWidth) "")
+      "width" $width
+      "height" $height) -}}
+<img
+  {{- range $k, $v := $attributes -}}
+    {{- if $v -}}
+      {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
+    {{- end -}}
+  {{- end -}}>
+{{- /**/ -}}
