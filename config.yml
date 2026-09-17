@@ -70,7 +70,7 @@ params:
   ShowToc: true
 
   homeInfoParams:
-    Image: images/world-model.png
+    Image: images/world-model.jpg
     ImageAlt: "So... what is a world model really?"
     Title: "Hi, I'm Yizhou"
     Content: >
