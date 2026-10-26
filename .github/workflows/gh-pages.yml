@@ -52,10 +52,9 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Get Theme
+      # Build the pinned theme commit so Hugo compatibility stays reproducible.
+      - name: Get pinned theme
         run: git submodule update --init --recursive
-      - name: Update theme to Latest commit
-        run: git submodule update --remote --merge
       - name: Build with Hugo
         run: |
           hugo \

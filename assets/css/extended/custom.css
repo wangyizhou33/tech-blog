@@ -35,3 +35,45 @@ img {
     border-radius: var(--radius);
     margin-bottom: var(--gap);
 }
+
+.social-icons .wechat-contact {
+    position: relative;
+    display: inline-flex;
+    padding: 10px;
+    vertical-align: baseline;
+}
+
+.wechat-contact svg {
+    width: 26px;
+    height: 26px;
+}
+
+.wechat-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--entry);
+    color: var(--primary);
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.wechat-contact:hover .wechat-tooltip,
+.wechat-contact:focus .wechat-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.wechat-contact:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+}
