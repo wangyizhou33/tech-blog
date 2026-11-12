@@ -92,6 +92,9 @@ params:
 
   assets:
     disableHLJS: true
+    favicon: "favicon.svg"
+    theme_color: "#faf9f5"
+    msapplication_TileColor: "#d97757"
 
 markup:
   goldmark:
