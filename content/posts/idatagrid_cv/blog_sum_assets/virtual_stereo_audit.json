@@ -1,0 +1,321 @@
+{
+  "episode": "episode_20260720_150841",
+  "sources": {
+    "implementation": {
+      "path": "/home/lsy/work/calibration/stereo_virtual/get_virtual_stereo.py",
+      "sha256": "c988abc60e97b51f7c8a4b97ef9141499ef94ab5d0a7c86160cc1a3eafe4dbc7"
+    },
+    "geometry_illustration": {
+      "path": "/home/lsy/work/calibration/docs/09_双目虚拟相机_博客与示意图3/assets/stereo_virtual_camera_comparison.png",
+      "sha256": "c284b6fbf036f840b3c005f0d0d78597ce951ad6d18d4bdb3e5edc3f26803a29"
+    },
+    "physical_calibration_left": {
+      "path": "/data/calibration/virtual_cam/episode_20260720_150841/calibration/rgb_left.json",
+      "sha256": "183bccfa1e6c2f7d296bf91804fd007181b64f17f25eb133b038bda22aa3c212"
+    },
+    "physical_calibration_right": {
+      "path": "/data/calibration/virtual_cam/episode_20260720_150841/calibration/rgb_right.json",
+      "sha256": "d5d28a515b7646fcaf1b52991a7af04af6500c6b27e89dacd8e0ac245ce4fff3"
+    },
+    "raw_left": {
+      "path": "/data/calibration/virtual_cam/episode_20260720_150841_transformed/images/rgb_left/1784560121000000000.png",
+      "sha256": "5a492b284018e852096ae0818e6539e40fe620518b7a4d5162d540cc1526cdc7"
+    },
+    "raw_right": {
+      "path": "/data/calibration/virtual_cam/episode_20260720_150841_transformed/images/rgb_right/1784560121000014080.png",
+      "sha256": "cbc2123f35231923800f83e6399022787556acb6d0ea5d225b2f95d0ec3c3a78"
+    },
+    "comparison_calibration_snapshot": {
+      "path": "/data/calibration/virtual_cam/virtual_results_vfov70/gd1_virtual_rectified_calibration.json",
+      "sha256": "56a26f55f7fab85c6166db42bfcd4dec9c82261085356f88368caddbf87f988a"
+    },
+    "gd1_physical_calibration": {
+      "path": "/home/lsy/work/calibration/calibration_results/unitree/stereo_intrinsic.yaml",
+      "sha256": "9044c883ccea42f61dad9c0817dbebbe76d7c956f8a2ba067030d14a3237db53"
+    }
+  },
+  "opencv_version": "4.13.0",
+  "source_model": "seucm",
+  "model_selection_basis": "SEUCM selected from the user's previously verified undistortion comparison; this run does not repeat the comparative benchmark",
+  "virtual_projection_model": "pinhole",
+  "virtual_size_wh": [
+    640,
+    480
+  ],
+  "hfov_vfov_deg": [
+    100,
+    70
+  ],
+  "fov_definition": "Principal-point scanlines; endpoint centers 0..W-1, 0..H-1",
+  "square_pixels": false,
+  "K_virtual": [
+    [
+      268.092332161141,
+      0.0,
+      319.5
+    ],
+    [
+      0.0,
+      342.04144761473646,
+      239.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "baseline_m": 0.06521590426430715,
+  "T_V1_V2": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.06521590426430715
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "P_V1": [
+    [
+      268.092332161141,
+      0.0,
+      319.5,
+      0.0
+    ],
+    [
+      0.0,
+      342.04144761473646,
+      239.5,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "P_V2": [
+    [
+      268.092332161141,
+      0.0,
+      319.5,
+      -17.483883868215802
+    ],
+    [
+      0.0,
+      342.04144761473646,
+      239.5,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "Q": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      -319.5
+    ],
+    [
+      0.0,
+      0.7838007178098217,
+      0.0,
+      -187.72027191545232
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      268.092332161141
+    ],
+    [
+      0.0,
+      0.0,
+      15.33368296094152,
+      0.0
+    ]
+  ],
+  "mask_positive_ratios": {
+    "left": 1.0,
+    "right": 1.0,
+    "intersection": 1.0
+  },
+  "mask_scope": "Finite in-bounds source coordinates with a one-pixel margin only",
+  "generated_virtual_calibration": "virtual_stereo_calibration.json",
+  "generated_virtual_images": [
+    "virtual_stereo_left.png",
+    "virtual_stereo_right.png"
+  ],
+  "algebra": {
+    "relative_rotation_fro_error": 1.2491153993492563e-07,
+    "virtual_baseline_error": 1.3877799791023867e-17,
+    "t_V1_V2_x": 0.06521590426430714,
+    "t_V1_V2_y": 1.6594471699850384e-20,
+    "t_V1_V2_z": 7.564689515068207e-21,
+    "baseline": 0.06521590426430715,
+    "valid_ratio_1": 1.0,
+    "valid_ratio_2": 1.0,
+    "valid_ratio_stereo": 1.0
+  },
+  "synthetic_projection_roundtrip": {
+    "num_points": 2000,
+    "reprojection_rms_V1_px": 8.818004253361058e-14,
+    "reprojection_rms_V2_px": 1.8099015312327416e-05,
+    "epipolar_vertical_rms_px": 8.805856407412847e-06,
+    "epipolar_vertical_p95_px": 1.4896783812901048e-05,
+    "depth_relative_mean": 7.956147133547016e-06,
+    "depth_relative_p95": 2.179590963654857e-05
+  },
+  "comparison_snapshot_baseline_m": 0.05991437458350065,
+  "cross_model_results": {
+    "root": "/data/calibration/virtual_cam/virtual_results_vfov70",
+    "K_virtual": [
+      [
+        268.092332161141,
+        0.0,
+        319.5
+      ],
+      [
+        0.0,
+        342.04144761473646,
+        239.5
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "depth_display_limits_m": [
+      0.25,
+      5.5
+    ],
+    "devices": {
+      "ego_air": {
+        "label": "Ego-Air",
+        "source_model": "seucm",
+        "physical_image_size_wh": [
+          1600,
+          1200
+        ],
+        "virtual_image_size_wh": [
+          640,
+          480
+        ],
+        "baseline_m": 0.06521590426430715,
+        "fB_m_px": 17.483883868215802,
+        "depth_positive_finite_ratio": 0.9820084635416667,
+        "positive_depth_range_m": [
+          0.3268585503101349,
+          5.178325176239014
+        ],
+        "depth_inputs_match_virtual_images": true,
+        "sources": {
+          "calibration": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/ego_air_virtual_rectified_calibration.json",
+            "sha256": "4c379a00fcb5d89c77361516cb0c90ac7df11b220202d9105a88103846983ef6"
+          },
+          "left": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/ego_air_rectified/left_rect.png",
+            "sha256": "56a9155a134f3f58a93766cb65a5bfdac5e06e6bd8c7eb131a6ea654c5f4e200"
+          },
+          "right": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/ego_air_rectified/right_rect.png",
+            "sha256": "d2556717fd0949d59683278e3a68645b3b5d41ff39fc72c152dc90ff27a0db93"
+          },
+          "depth_input_left": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/ego_air_stereo_depth/left.png",
+            "sha256": "110e1d22653309a4a760d19e5ada834c786acb33e8e53080b9cfc9cb162b831f"
+          },
+          "depth_input_right": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/ego_air_stereo_depth/right.png",
+            "sha256": "381a0849950d639983e340d9f42f19351450f5c3119250cd0de21d66c2f377d5"
+          },
+          "disparity_visualization": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/ego_air_stereo_depth/disp_vis.png",
+            "sha256": "9d43412f04db08c6d8045a97230698e3bdd20c6aacc695708f77a036963f62bb"
+          },
+          "depth_m": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/ego_air_stereo_depth/depth_meter.npy",
+            "sha256": "3e852982611b49f343ddeeb1564d549629ae2326e07b017ad73d5d39d6f2ed9d"
+          }
+        }
+      },
+      "gd1": {
+        "label": "unitree_gd1",
+        "source_model": "pdcm",
+        "physical_image_size_wh": [
+          640,
+          480
+        ],
+        "virtual_image_size_wh": [
+          640,
+          480
+        ],
+        "baseline_m": 0.05991437458350065,
+        "fB_m_px": 16.06258441206688,
+        "depth_positive_finite_ratio": 0.9790657552083334,
+        "positive_depth_range_m": [
+          0.3853554129600525,
+          3.183540105819702
+        ],
+        "depth_inputs_match_virtual_images": true,
+        "sources": {
+          "calibration": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/gd1_virtual_rectified_calibration.json",
+            "sha256": "56a26f55f7fab85c6166db42bfcd4dec9c82261085356f88368caddbf87f988a"
+          },
+          "left": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/gd1_rectified/left_rect.png",
+            "sha256": "913acd81352e7689501e51b52e720790ed8db2cfd6cc4d21f8449a8397180b18"
+          },
+          "right": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/gd1_rectified/right_rect.png",
+            "sha256": "020e774d47cd68692f1130f637a33c2b574e0cec54c8399eab55929250b564c0"
+          },
+          "depth_input_left": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/gd1_stereo_depth/left.png",
+            "sha256": "b1f004b562a603764acf8dfa20a17241075a54c03d9646339a2b8ff41a266d5e"
+          },
+          "depth_input_right": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/gd1_stereo_depth/right.png",
+            "sha256": "0309ed68385663819e1e43f57ee89b05fe6e3f4fa89c381e5ca0b4fe00252d09"
+          },
+          "disparity_visualization": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/gd1_stereo_depth/disp_vis.png",
+            "sha256": "306f208ed23043f3970e9cf7d4b35dad969989c4fd92a0d8521dd1a196652003"
+          },
+          "depth_m": {
+            "path": "/data/calibration/virtual_cam/virtual_results_vfov70/gd1_stereo_depth/depth_meter.npy",
+            "sha256": "202b65e3aa2872be944c84c3238c023d783d3b0cbf4e7b06076e7507d1ec0bcf"
+          }
+        }
+      }
+    },
+    "scope": "Read existing result images and depth arrays; no new depth inference, shared-pose comparison or independent accuracy benchmark"
+  },
+  "scope": "SEUCM geometry/preset generation, not new real-image accuracy acceptance"
+}

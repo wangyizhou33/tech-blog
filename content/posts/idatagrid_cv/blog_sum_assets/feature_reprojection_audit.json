@@ -1,0 +1,130 @@
+{
+  "source_dataset": "/data/vslam/orbbec/EGO_AZEB761000F_Joint_2_20260831_102919",
+  "images": [
+    {
+      "file": "head_cam0_match.png",
+      "image_size": [3200, 1300],
+      "sha256": "a6957364cb4c7bf52e71a34ecf162b968449432b4191d73c5485e5252ce4a528",
+      "scope": "User-provided matching illustration between two frames of head cam0, not left-right stereo.",
+      "unverified": ["processing_run", "frame_identifiers", "pair_time_difference", "geometric_inlier_status"]
+    },
+    {
+      "file": "head_cam0_left_wrist_match.png",
+      "image_size": [3200, 1300],
+      "sha256": "44981e520e9aa1e08c8afc5d350224aafb39958984e2546f074cbc201ee48dfc",
+      "scope": "User-provided 2D-2D matching illustration between head cam0 and left Wristcam; not a verified 2D-3D localization result.",
+      "unverified": ["processing_run", "frame_identifiers", "pair_time_difference", "geometric_inlier_status"]
+    },
+    {
+      "file": "seq_00000112_cam_0.png",
+      "image_size": [800, 650],
+      "sha256": "4b82b8b1b8341da4b630da5cc39a85135ca1ef8dd140914e402a0a95f0c307f8",
+      "source_file": "/data/vslam/orbbec/EGO_AZEB761000F_Joint_2_20260831_102919/cross_pose_new/cross_reproj_visual/head/overlays/first/seq_00000112_cam_0.png",
+      "source_bytes_identical": true
+    }
+  ],
+  "reprojection": {
+    "source_run": "/data/vslam/orbbec/EGO_AZEB761000F_Joint_2_20260831_102919/cross_pose_new",
+    "source_session_metadata": {
+      "file": "/data/vslam/orbbec/EGO_AZEB761000F_Joint_2_20260831_102919/cross_pose_new/sessions/head/session.json",
+      "sha256": "df991dc88f2071f34ad11a129b214fee7b325c2b06eb0b4b38f381d7bcf47353"
+    },
+    "source_residuals": {
+      "file": "/data/vslam/orbbec/EGO_AZEB761000F_Joint_2_20260831_102919/cross_pose_new/cross_reproj_visual/head/pair_residuals.csv",
+      "sha256": "a3a63201a9452bccb39e0ffb6dbddd54375b2139548ef76709b578e8a40241bc"
+    },
+    "source_driver": {
+      "file": "/home/lsy/work/open_vins/ov_offline_test/scripts/show_cross_keyframe_reprojects.sh",
+      "sha256": "beb7384fe64fc7fcb55abe4d37c424d7773360c48f300539ec68e2e9dc4858fb"
+    },
+    "source_implementation": {
+      "file": "/home/lsy/work/open_vins/ov_offline_test/python/cross_keyframe_reprojection.py",
+      "sha256": "043d451b6dcf70232f2fffbdbf1ffef5c2b0d60b73190571cfe08392a6a1d2de"
+    },
+    "selection": {
+      "device": "head",
+      "mode": "first",
+      "target_sequence": 112,
+      "camera_id": 0
+    },
+    "camera_model": "equidistant",
+    "projection_image_size": [800, 650],
+    "pair_count": 49,
+    "valid_projection_count": 49,
+    "in_frame_count": 49,
+    "drawn_count": 49,
+    "error": {
+      "definition": "Euclidean distance between the frozen landmark projection and the observed 2D feature.",
+      "unit": "pixels at session projection image size",
+      "denominator": "All valid finite projections in the selected mode/target_sequence/camera_id group, not only a drawn subset.",
+      "median_px": 1.53440792,
+      "p95_px": 6.185641344,
+      "overlay_large_error_threshold_px": 8,
+      "strictly_greater_than_threshold_count": 1,
+      "threshold_is_acceptance_criterion": false
+    },
+    "first_mode": "Freeze each feature's first persistent SLAM landmark snapshot and project it into later keyframes observing the same feature ID.",
+    "final_mode": "Freeze each feature's last persistent SLAM landmark snapshot and project it into earlier keyframes observing the same feature ID; not evaluated by this selected image.",
+    "scope": "Internal single-device cross-keyframe consistency using exported local VIO poses and SLAM points, not independent ground truth or absolute cross-device pose accuracy.",
+    "pose_graph_video_statistics_same_run": false
+  },
+  "cross_device_debug": {
+    "file": "cross_device_debug_oneframe.png",
+    "image_size": [2830, 2004],
+    "sha256": "683a5e5e1824d7265384ea1d8c5ed18380d30fe5b8adefeb49f375e3e773afbb",
+    "source_debug_root": "/data/vslam/orbbec/EGO_AZEB761000F_Joint_2_20260831_102919/cross_pose_new/debug",
+    "source_implementation": {
+      "file": "/home/lsy/work/open_vins/ov_offline_test/python/visualize_cross_device_debug_oneframe.py",
+      "sha256": "023c8d7c18b7e3ffef3755a10402e28cf2d57e7873a8d8551a3125c0a8acc447"
+    },
+    "base_implementation": {
+      "file": "/home/lsy/work/open_vins/ov_offline_test/python/visualize_cross_device_debug.py",
+      "sha256": "6c22f459395a157282f485d341331a1ca783ab4d43e14d5054ffb7d2902bc386"
+    },
+    "source_input_sha256": {
+      "head_map.ply": "0c136c162c2541c014fdba7f4b24dca9cd92706418d1d6202bd14101767bea11",
+      "left/matches.csv": "ddd3d3cf38c1d860202964b4f2827d48fdcfdfe146976f8ff6082103194060a4",
+      "right/matches.csv": "ae3aff37aadf7f39613a6ecbf536bce60a5c8bdbfbca398ab420ec6e6abd2a17",
+      "left/localization_poses.csv": "b090b6e8da3fb619e48824b37847449ee159e6b8ff7a38b926fe7a3eebc82a79",
+      "right/localization_poses.csv": "8e848925a792242b55605201b40f89fb5ec51bbfa96f4fcea067bdaec4861a50"
+    },
+    "head_map_point_count": 11926,
+    "matched_landmark_groups": {
+      "left_only": 58,
+      "right_only": 66,
+      "both": 4,
+      "left_including_shared": 62,
+      "right_including_shared": 70,
+      "union": 128
+    },
+    "group_definition": "Only rows matching each selected successful query_sequence/query_camera_id/map_camera_id, with inlier=1 and finite world coordinates, deduplicated by landmark_id. Three groups are mutually exclusive; no sequence-wide accumulation.",
+    "draws_device_trajectories": false,
+    "gallery": [
+      {
+        "device": "left",
+        "query_sequence": 42,
+        "head_sequence": 239,
+        "query_camera_id": 0,
+        "map_camera_id": 0,
+        "total": 77,
+        "inliers": 62
+      },
+      {
+        "device": "right",
+        "query_sequence": 98,
+        "head_sequence": 75,
+        "query_camera_id": 0,
+        "map_camera_id": 1,
+        "total": 94,
+        "inliers": 70
+      }
+    ],
+    "gallery_selection": "One successful query-camera/map-camera pair per device, ranked by inlier count, then total count, then query sequence. Selected map highlights use exactly those frame groups; not all-session localization success.",
+    "current_saved_render_sha256": "683a5e5e1824d7265384ea1d8c5ed18380d30fe5b8adefeb49f375e3e773afbb",
+    "current_saved_render_bytes_identical": true,
+    "current_saved_render_pixels_identical": true,
+    "scope": "Provided image retained unchanged and byte-identical to the current same-name debug PNG. Map highlights and gallery refer to one selected frame per device, with no device trajectories. The two selected frames are not simultaneous observations or independent pose accuracy.",
+    "pose_graph_video_statistics_same_run": false
+  },
+  "validation_scope": "Existing images, saved residuals and debug export statistics were inspected; neither VIO nor the image export pipelines were rerun. Original images, source sessions and external code were not modified."
+}
