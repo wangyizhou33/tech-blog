@@ -319,7 +319,7 @@ $$
 
 *图 10｜拼接视频第 12 秒。上方从左到右为参与拼接的 `cam3`、`cam1`、`cam0` 三路原图，下方为柱面全景。这是四目设备的三路拼接示例，不是四路同时输出，也不能证明 360° 覆盖。黑边是当前输出中没有有效图像覆盖的区域。*
 
-[播放多目柱面全景视频（约 39 秒）](blog_sum_assets/grid_cyl.mp4)
+{{< video src="blog_sum_assets/grid_cyl.mp4" poster="blog_sum_assets/panorama_frame_12s.png" title="多目柱面全景视频（约 39 秒）" >}}
 
 #### 4.2.1 实际链路：标定去畸变，特征估计对齐，固定映射拼接
 
@@ -459,7 +459,7 @@ $$
 
 *图 15｜定位回放第 12 秒。上方为头环双目及左右腕部图像，头环图中叠加腕部位姿的投影；下方为共同坐标系中的三维轨迹与 XY 俯视，青、绿、紫分别表示头环、左腕、右腕。投影位置和距离均来自估计结果，不是独立测量。*
 
-[播放头环＋双腕跨设备定位视频（约 25 秒）](blog_sum_assets/replay_stage_pose_graph.mp4)
+{{< video src="blog_sum_assets/replay_stage_pose_graph.mp4" poster="blog_sum_assets/pose_graph_frame_12s.png" title="头环＋双腕跨设备定位视频（约 25 秒）" >}}
 
 该视频对应位姿图优化阶段。约束统计包括 2354 个里程计相对位姿约束、153 个左腕和 217 个右腕跨设备约束，以及一个锚定位姿先验。IMU 参与了前端 VIO，但这一后端阶段没有额外的 IMU 预积分或图像重投影因子，所以它不是完整视觉惯性联合 BA 的验证结果。
 

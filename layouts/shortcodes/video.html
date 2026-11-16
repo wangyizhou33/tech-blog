@@ -1,0 +1,31 @@
+{{- /*
+  Inline video player for a page-bundle (or absolute) video file.
+
+  Usage: {{< video src="assets/clip.mp4" poster="assets/frame.png" title="..." >}}
+
+  - src:    required; resolved as a page resource when possible.
+  - poster: optional still shown before playback (Safari shows a blank box
+            without one). Raster posters are downscaled to the column width.
+  - title:  optional accessible label, also used for the fallback link.
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- with .Page.Resources.Get $src }}{{ $src = .RelPermalink }}{{ end -}}
+{{- $poster := "" -}}
+{{- with .Get "poster" -}}
+  {{- $poster = . -}}
+  {{- with $.Page.Resources.Get . -}}
+    {{- if in (slice "png" "jpeg" "webp") .MediaType.SubType -}}
+      {{- $poster = (.Resize "1000x jpg q85").RelPermalink -}}
+    {{- else -}}
+      {{- $poster = .RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $title := .Get "title" -}}
+<figure class="post-video">
+  <video controls playsinline preload="metadata" src="{{ $src }}"
+    {{- with $poster }} poster="{{ . }}"{{ end }}
+    {{- with $title }} aria-label="{{ . }}"{{ end }}>
+    <a href="{{ $src }}">{{ or $title "下载视频" }}</a>
+  </video>
+</figure>

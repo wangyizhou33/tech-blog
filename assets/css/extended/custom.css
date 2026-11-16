@@ -337,3 +337,17 @@ input:focus-visible {
     overflow-x: auto;
     overflow-y: hidden;
 }
+
+/* Inline videos ({{< video >}} shortcode) */
+.post-content .post-video {
+    margin: 1.25em 0;
+}
+
+.post-content .post-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    background: #000;
+    border-radius: var(--radius);
+}
