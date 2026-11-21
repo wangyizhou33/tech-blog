@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="{{ site.Language }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ .Title }}</title>
+    <link rel="canonical" href="{{ .Params.externalURL }}">
+    <meta http-equiv="refresh" content="0; url={{ .Params.externalURL }}">
+  </head>
+  <body>
+    <a href="{{ .Params.externalURL }}">{{ .Title }}</a>
+  </body>
+</html>
