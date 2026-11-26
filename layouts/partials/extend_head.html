@@ -1,3 +1,8 @@
+{{- /* Optional heading styles from the current page bundle. */ -}}
+{{- with .Resources.Get "assets/headings.css" }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+{{- end }}
+
 {{- /* KaTeX: enabled per page with `math: true` in front matter. */ -}}
 {{- if .Param "math" }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
