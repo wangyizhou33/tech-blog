@@ -30,10 +30,81 @@ img {
     height: auto;
 }
 
+.first-entry.home-info {
+    min-height: 0;
+}
+
+.home-info:has(> .home-info-visual) {
+    display: grid;
+    grid-template-columns: min(36%, 240px) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--gap);
+}
+
 .home-info-image {
     width: 100%;
     border-radius: var(--radius);
-    margin-bottom: var(--gap);
+}
+
+.home-portrait-trigger {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+.home-portrait {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    place-items: center;
+    pointer-events: none;
+}
+
+.home-portrait:not([hidden]) {
+    display: grid;
+}
+
+.home-portrait img {
+    width: min(78vw, 52dvh, 360px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .home-portrait:not([hidden]) img {
+        animation: portrait-jump 460ms cubic-bezier(.22, .8, .35, 1) both;
+    }
+}
+
+@keyframes portrait-jump {
+    from {
+        opacity: 0;
+        transform: translate(var(--portrait-x), var(--portrait-y)) scale(.25);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.04);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.home-info .entry-header h1 {
+    font-size: clamp(1.5rem, 3vw, 2.125rem);
+}
+
+@media (max-width: 40rem) {
+    .home-info-visual {
+        align-self: start;
+    }
+
+    .home-info .wechat-tooltip {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
 }
 
 .social-icons .wechat-contact {
@@ -181,6 +252,145 @@ img {
 
 .post-entry:active {
     transform: scale(0.99);
+}
+
+.header:has(+ .main > .home-layout) .nav {
+    max-width: calc(var(--main-width) + 2 * var(--gap));
+    padding-inline: var(--gap);
+}
+
+.header:has(+ .main > .home-layout) :is(.logo, #menu) {
+    margin-inline: 0;
+}
+
+.header:has(+ .main > .home-layout) #menu {
+    margin-inline-start: auto;
+}
+
+@media (max-width: 21rem) {
+    .header:has(+ .main > .home-layout) #menu li + li {
+        margin-inline-start: 8px;
+    }
+}
+
+.home-layout {
+    display: grid;
+    gap: var(--gap);
+}
+
+.home-feed {
+    min-width: 0;
+}
+
+.home-feed .home-info {
+    margin-block-start: 0;
+}
+
+.home-index {
+    min-width: 0;
+    padding: 14px 16px 8px;
+    border: 1px solid var(--border);
+    border-block-start: 3px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--entry);
+}
+
+.home-index h2 {
+    margin-block-end: 10px;
+    font: 500 25px/1.2 var(--font-serif);
+    letter-spacing: -0.02em;
+}
+
+.home-index ul {
+    list-style: none;
+}
+
+.home-index li {
+    border-block-start: 1px solid var(--border);
+}
+
+.home-index a {
+    display: block;
+    padding-block: 8px;
+    font-size: 14px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.home-index a:hover,
+.home-index a:focus-visible {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 24rem) {
+    .home-index {
+        padding: 10px 14px 8px;
+    }
+
+    .home-index h2 {
+        margin-block-end: 6px;
+    }
+
+    .home-index a {
+        padding-block: 5px;
+    }
+}
+
+@media (min-width: 40rem) and (width < 75rem) {
+    .home-index ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--gap);
+    }
+}
+
+@media (min-width: 75rem) {
+    .main:has(> .home-layout) {
+        max-width: calc(var(--main-width) + 32rem + 4 * var(--gap));
+    }
+
+    .home-layout {
+        /* Equal outer columns keep the feed centered in the viewport. */
+        grid-template-columns: minmax(0, 1fr) var(--main-width) minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .home-feed {
+        grid-column: 2;
+    }
+
+    .home-index {
+        position: sticky;
+        inset-block-start: var(--gap);
+        max-height: calc(100dvh - 2 * var(--gap));
+        overflow-y: auto;
+        padding: 4px 4px 4px 14px;
+        border: 0;
+        border-inline-start: 2px solid var(--accent);
+        border-radius: 0;
+        background: transparent;
+    }
+}
+
+@media (75rem <= width < 84rem) {
+    .main:has(> .home-layout) {
+        padding-inline: 16px;
+    }
+
+    .home-layout {
+        column-gap: 16px;
+    }
+
+    .home-index {
+        padding-inline-start: 10px;
+    }
+
+    .home-index a {
+        padding-block: 5px;
+        line-height: 1.4;
+    }
 }
 
 /* Pill buttons: ink fill, clay on hover */

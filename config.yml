@@ -74,6 +74,7 @@ params:
 
   homeInfoParams:
     Image: images/world-model.jpg
+    ImagePortrait: images/world-model-portrait.png
     ImageAlt: "So... what is a world model really?"
     Title: "Hi, I'm Yizhou"
     Content: >

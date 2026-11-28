@@ -1,34 +1,56 @@
 {{- /*
-  Override of PaperMod's home_info.html: adds an optional image above the
-  homepage intro, set by homeInfoParams.Image (a path under assets/).
-  Resized and re-encoded like body images (see _markup/render-image.html).
+  The optional image next to the homepage intro comes from homeInfoParams.Image
+  (a path under assets/). Generate smaller versions for the inline display.
 */ -}}
 {{- with site.Params.homeInfoParams }}
+{{- $portrait := "" }}
+{{- with .ImagePortrait }}
+    {{- $portrait = resources.Get . }}
+{{- end }}
 <article class="first-entry home-info">
     {{- with .Image }}
     {{- with resources.Get . }}
-    {{- $large := .Resize (printf "%dx jpg q90" (cond (gt .Width 2000) 2000 .Width)) }}
-    {{- $small := $large }}
-    {{- if gt .Width 1000 }}{{ $small = .Resize "1000x jpg q90" }}{{ end }}
-    <img class="home-info-image" src="{{ $large.RelPermalink }}"
-        {{- if ne $small.RelPermalink $large.RelPermalink }}
-        srcset="{{ $small.RelPermalink }} {{ $small.Width }}w, {{ $large.RelPermalink }} {{ $large.Width }}w"
-        sizes="(min-width: 1000px) 1000px, 100vw"
+    {{- $small := .Resize (printf "%dx jpg q90" (cond (gt .Width 240) 240 .Width)) }}
+    {{- $large := $small }}
+    {{- if gt .Width 240 }}{{ $large = .Resize (printf "%dx jpg q90" (cond (gt .Width 480) 480 .Width)) }}{{ end }}
+    <div class="home-info-visual">
+        {{- if $portrait }}
+        <button class="home-portrait-trigger" type="button" aria-controls="home-portrait" aria-expanded="false"
+            aria-label="Show Yizhou’s portrait from the world model illustration">
         {{- end }}
-        width="{{ $large.Width }}" height="{{ $large.Height }}"
-        alt="{{ site.Params.homeInfoParams.ImageAlt }}">
+        <img class="home-info-image" src="{{ $small.RelPermalink }}"
+            {{- if ne $small.RelPermalink $large.RelPermalink }}
+            srcset="{{ $small.RelPermalink }} {{ $small.Width }}w, {{ $large.RelPermalink }} {{ $large.Width }}w"
+            sizes="(max-width: 640px) 36vw, 240px"
+            {{- end }}
+            width="{{ $small.Width }}" height="{{ $small.Height }}"
+            alt="{{ site.Params.homeInfoParams.ImageAlt }}">
+        {{- if $portrait }}
+        </button>
+        {{- end }}
+    </div>
+    {{- with $portrait }}
+    <div id="home-portrait" class="home-portrait" hidden>
+        <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="Pixel-art portrait of Yizhou">
+    </div>
+    {{- with resources.Get "js/home-portrait.js" | fingerprint }}
+    <script src="{{ .RelPermalink }}" defer></script>
+    {{- end }}
+    {{- end }}
     {{- else }}
     {{- warnf "homeInfoParams.Image %q not found under assets/" . }}
     {{- end }}
     {{- end }}
-    <header class="entry-header">
-        <h1>{{ .Title | markdownify }}</h1>
-    </header>
-    <div class="entry-content">
-        {{ .Content | markdownify }}
+    <div class="home-info-copy">
+        <header class="entry-header">
+            <h1>{{ .Title | markdownify }}</h1>
+        </header>
+        <div class="entry-content">
+            {{ .Content | markdownify }}
+        </div>
+        <footer class="entry-footer">
+            {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+        </footer>
     </div>
-    <footer class="entry-footer">
-        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
-    </footer>
 </article>
 {{- end -}}
